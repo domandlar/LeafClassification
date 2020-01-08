@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="LeafClassification.Views.AdministrationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LeafClassification.Views"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" MinHeight="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <!--Učitavanje i obrada slika-->
+
+        <Label Margin="5" Content="Dodaj novu vrstu: " Grid.Row="0" Grid.Column="0"/>
+        <TextBox Margin="5" TextAlignment="Right" VerticalContentAlignment="Center" x:Name="NewPlant" Grid.Row="0" Grid.Column="1" MinWidth="100"></TextBox>
+        <Button Margin="5" x:Name="AddNewPlant" Grid.Row="1" Grid.Column="1" Content="Dodaj" MinHeight="30"></Button>
+        <ComboBox Margin="5" Name="Plants" DisplayMemberPath="Name" SelectedItem="{Binding Path=SelectedPlant}" Grid.Row="0" Grid.Column="3" MinWidth="100"/>
+        <Button Margin="5" x:Name="LoadLeafs" Grid.Row="0" Grid.Column="4" Content="Ucitaj uzorke listava" MinHeight="30"></Button>
+        <!--Obrada-->
+        <Label  Content="Broj učitanih uzoraka: " Grid.Row="0" Grid.Column="5" VerticalAlignment="Bottom"/>
+        <TextBox  TextAlignment="Right" VerticalContentAlignment="Center" x:Name="NumberOfSamples" Grid.Row="1" Grid.Column="5" MaxHeight="20" IsReadOnly="True"></TextBox>
+        <Label  Content="Ukupan broj učitanih uzoraka: " Grid.Row="2" Grid.Column="5" VerticalAlignment="Bottom"/>
+        <TextBox  TextAlignment="Right" VerticalContentAlignment="Center" x:Name="TotalNumberOfSamples" Grid.Row="3" Grid.Column="5" MaxHeight="20" IsReadOnly="True"></TextBox>
+        
+        <Button x:Name="GetTokens" Grid.Row="4" Grid.Column="5" Content="Obradi listove" Margin="10" MinHeight="30"></Button>
+
+        <Rectangle Height="30" Grid.Row="5"/>
+        <!--Mreža-->
+        <Label Content="Maksimalan broj iteracija: " Grid.Row="6" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="MaxIterations" Grid.Row="6" Grid.Column="1" Margin="5" TextAlignment="Right" VerticalContentAlignment="Center"></TextBox>
+        <Label Content="Maksimalna dopuštena pokreška: " Grid.Row="7" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="MaxError" Grid.Row="7" Grid.Column="1" Margin="5" TextAlignment="Right" VerticalContentAlignment="Center"></TextBox>
+        <Label Content="Broj ulaznih čvrova: " Grid.Row="8" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="NumberOfInputNodes" Grid.Row="8" Grid.Column="1" Margin="5" TextAlignment="Right" VerticalContentAlignment="Center"></TextBox>
+        <Label Content="Broj skrivenih slojeva: " Grid.Row="9" Grid.Column="0" Margin="5"/>
+        <TextBox x:Name="NumberOfHiddenLayers" Grid.Row="9" Grid.Column="1" Margin="5" TextAlignment="Right" VerticalContentAlignment="Center"></TextBox>
+        
+        <Label Content="Sloj: " Margin="5" Grid.Row="6" Grid.Column="3" VerticalAlignment="Center"/>
+        <ComboBox Margin="5" Name="Layers" DisplayMemberPath="Layer" SelectedItem="{Binding Path=SelectedLayer}" Grid.Row="6" Grid.Column="4" MaxHeight="30" VerticalAlignment="Center"/>
+        <Label Content="Funkcija: " Margin="5" Grid.Row="7" Grid.Column="3"/>
+
+        <ComboBox Margin="5" Name="TransferFunctions" SelectedItem="{Binding Path=SelectedFunction}" Grid.Row="7" Grid.Column="4" MaxHeight="30"/>
+
+        <Button x:Name="TrainNetwork" Grid.Row="6" Grid.Column="5" Content="Treniraj mrežu" Margin="10" MinHeight="30"></Button>
+
+    </Grid>
+</UserControl>
